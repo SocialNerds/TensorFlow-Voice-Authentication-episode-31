@@ -3,10 +3,10 @@ from files import get_all_file_data, get_test_files
 
 input_n = 40000
 # Hidden layers.
-l1_n = 200
-l2_n = 200
-l3_n = 200
-l4_n = 200
+l1_n = 500
+l2_n = 500
+l3_n = 500
+l4_n = 500
 
 # Output layer.
 n_classes = 2
