@@ -1,0 +1,17 @@
+version: "3"
+services:
+
+  tf:
+    build:
+      context: ./tf
+    ports:
+      - "8888:8888"
+      - "6006:6006"
+    networks:
+      - overlay
+    container_name: tensorflow
+    volumes:
+      - ./data/scripts:/scripts
+
+networks:
+  overlay:
