@@ -1,5 +1,5 @@
 import numpy as np
-from scipy.fftpack import fft
+import scipy.fftpack
 from scipy.io import wavfile
 from os import listdir
 import random
@@ -11,10 +11,15 @@ test_path = 'files/test'
 # Get a specific file.
 def get_file_data(file_path):
     fs, data = wavfile.read(file_path)
-    data_normalized = [(i/2**8.) * 2-1 for i in data]
-    data_fft = fft(data_normalized)
     print('FFT: ', file_path)
-    return abs(data_fft[:(40000)])
+    # data_normalized = [(i/2**8.) * 2-1 for i in data]
+    # data_fft = fft(data_normalized)
+    # return abs(data_fft[:(40000)])
+    N = 2000
+    data = scipy.fftpack.fft(data)
+    data = np.abs(data[:N//2])
+    data = 2*(data - np.max(data))/-np.ptp(data)-1
+    return data
 
 # Get all files from path.
 def get_files_from_path(folder_path):

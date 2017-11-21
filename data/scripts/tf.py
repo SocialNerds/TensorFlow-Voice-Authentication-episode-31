@@ -1,12 +1,12 @@
 import tensorflow as tf
 from files import get_all_file_data, get_test_files
 
-input_n = 40000
+input_n = 1000
 # Hidden layers.
-l1_n = 500
-l2_n = 500
-l3_n = 500
-l4_n = 500
+l1_n = 400
+l2_n = 400
+l3_n = 400
+l4_n = 400
 
 # Output layer.
 n_classes = 2
@@ -117,3 +117,4 @@ def train_model(x):
 
 # Train model and test accuracy.
 train_model(x)
+
