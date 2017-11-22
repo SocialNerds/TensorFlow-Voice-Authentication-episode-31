@@ -1,12 +1,12 @@
 import tensorflow as tf
 from files import get_all_file_data, get_test_files
 
-input_n = 1000
+input_n = 5000
 # Hidden layers.
-l1_n = 600
-l2_n = 600
-l3_n = 600
-l4_n = 600
+l1_n = 3000
+l2_n = 3000
+l3_n = 3000
+l4_n = 3000
 
 # Output layer.
 n_classes = 2

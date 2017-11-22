@@ -20,7 +20,7 @@ def get_file_data(file_path):
         # Save pickled file.
         fs, data = wavfile.read(file_path)
         print('FFT: ', file_path)
-        N = 2000
+        N = 10000
         data = scipy.fftpack.fft(data)
         data = np.abs(data[:N//2])
         data = 2*(data - np.max(data))/-np.ptp(data)-1
