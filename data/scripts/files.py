@@ -3,6 +3,7 @@ import scipy.fftpack
 from scipy.io import wavfile
 from os import listdir
 import random
+import re
 
 thanos_path = 'files/first'
 thanos_other_path = 'files/second'
@@ -10,9 +11,10 @@ test_path = 'files/test'
 
 # Get a specific file.
 def get_file_data(file_path):
+    temp_file_path = 'files/temp/' + re.sub(r".*?\/.*?\/", "", file_path) + '_np'
     try:
         # Get if pickled file, already exists.
-        data = np.load(file_path + '_np.npy')
+        data = np.load(temp_file_path + '.npy')
         return data
     except IOError:
         # Save pickled file.
@@ -24,7 +26,7 @@ def get_file_data(file_path):
         data = 2*(data - np.max(data))/-np.ptp(data)-1
 
         # Save.
-        np.save(file_path + '_np', data)
+        np.save(temp_file_path, data)
         return data
 
 # Get all files from path.
