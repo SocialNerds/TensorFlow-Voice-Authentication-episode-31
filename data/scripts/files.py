@@ -20,11 +20,18 @@ def get_file_data(file_path):
         # Save pickled file.
         fs, data = wavfile.read(file_path)
         print('FFT: ', file_path)
+        # Number of points to keep. If you change this value,
+        # you have to delete temp data under files/temp folder.
         N = 10000
+        # Normalize before fourier.
+        maxd = np.amax(data)
+        data = [(ele/(maxd * 1.0)) for ele in data]
+        # FFT.
         data = scipy.fftpack.fft(data)
+        # Keep the half.
         data = np.abs(data[:N//2])
+        # Normalize before TensorFlow.
         data = 2*(data - np.max(data))/-np.ptp(data)-1
-
         # Save.
         np.save(temp_file_path, data)
         return data
